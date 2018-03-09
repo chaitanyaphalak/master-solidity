@@ -16,7 +16,7 @@ contract ToDo {
             taskTime: _taskTime
         });
         taskIdList.push(_id);
-        LogTaskAdded(_id, _taskName, _taskTime);
+        emit LogTaskAdded(_id, _taskName, _taskTime);
         return true;
     }
     
