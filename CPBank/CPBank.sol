@@ -6,14 +6,14 @@ contract CPBank {
     
     event LogMoneyDeposited(address account, uint amount);
     
-    function CPBank() {
+    function CPBank() public {
         owner = msg.sender;
     }
     
     function depositMoney() public payable returns (uint) {
         require((balances[msg.sender] + msg.value) >= balances[msg.sender]);
         balances[msg.sender] += msg.value;
-        LogMoneyDeposited(msg.sender, msg.value);
+        emit LogMoneyDeposited(msg.sender, msg.value);
         return balances[msg.sender];
     }
     
@@ -27,7 +27,7 @@ contract CPBank {
         return balances[msg.sender];
     }
     
-    function () {
+    function () public payable {
         revert();
     }
 }
